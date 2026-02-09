@@ -1,19 +1,26 @@
-
 /* ============================================ */
-/* STYLES PRINCIPAUX DE LA NAVBAR */
+/* STYLES PRINCIPAUX DE LA NAVBAR - TUNISIE TELECOM */
 /* ============================================ */
 
 /* Conteneur principal de la navbar */
 .navbar {
-  background: linear-gradient(135deg, #0066b3 0%, #004a8f 100%);
+  background: linear-gradient(135deg, #0056a6 0%, #003366 100%);
   color: white;
-  padding: 0 8px;
+  padding: 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  min-height: 47px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  min-height: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Bande bleue supérieure */
+.navbar-top-bar {
+  background: rgba(0, 0, 0, 0.2);
+  height: 4px;
+  width: 100%;
 }
 
 .navbar-container {
@@ -22,219 +29,360 @@
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  height: 47px;
-  min-height: 47px;
+  height: 56px;
+  min-height: 56px;
+  padding: 0 16px;
 }
 
-/* Section gauche : Logo et nom de l'application */
+/* Section gauche : Logo */
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 10px;
-  transition: transform 0.2s ease;
-  padding-left: 8px;
-}
-
-.navbar-left:hover {
-  transform: translateY(-1px);
+  gap: 12px;
+  padding-left: 0;
+  flex-shrink: 0;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  min-width: 130px;
+  text-decoration: none;
+  gap: 10px;
+  transition: transform 0.2s ease;
+}
+
+.navbar-logo:hover {
+  transform: translateY(-2px);
 }
 
 .logo-img {
-  height: 30px;
+  height: 36px;
   width: auto;
-  transition: all 0.2s ease;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .logo-img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
 }
 
-.navbar-brand {
+.brand-text-container {
   display: flex;
-  align-items: center;
-  min-width: 150px;
+  flex-direction: column;
+  line-height: 1.1;
 }
 
-.brand-text {
-  font-size: 1.35rem;
-  font-weight: 700;
+.brand-main {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
   letter-spacing: 0.5px;
-  background: linear-gradient(90deg, #ffffff 0%, #e6f2ff 80%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  padding: 2px 0;
-  white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Section droite : menu de navigation */
-.navbar-right {
+.brand-sub {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Section centrale : Navigation principale */
+.navbar-center {
   display: flex;
   align-items: center;
-  padding-right: 8px;
-  flex-shrink: 0;
+  justify-content: center;
+  flex: 1;
+  max-width: 800px;
+  margin: 0 20px;
 }
 
 .nav-links {
   display: flex;
-  gap: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 6px;
-  border-radius: 35px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 4px;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav-link {
   color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   letter-spacing: 0.3px;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   line-height: 1.4;
-  min-height: 35px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid transparent;
 }
 
 .nav-link:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
   color: white;
   transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-link:active {
   transform: translateY(0px);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: transform 0.1s ease;
 }
 
 .nav-link.active {
-  background: rgba(255, 255, 255, 0.25);
+  background: linear-gradient(135deg, #0077cc 0%, #0056a6 100%);
   color: white;
-  font-weight: 600;
-  box-shadow: 0 3px 12px rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+  box-shadow: 
+    0 4px 15px rgba(0, 119, 204, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.nav-link::after {
+.nav-link.active:hover {
+  background: linear-gradient(135deg, #0088dd 0%, #0066b3 100%);
+  transform: translateY(-1px);
+}
+
+/* Indicateur de lien actif */
+.nav-link.active::before {
   content: "";
   position: absolute;
-  bottom: 4px;
+  top: 4px;
   left: 50%;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ffffff, transparent);
-  transition: all 0.3s ease;
   transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: linear-gradient(90deg, #00ccff, #ffffff);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(0, 204, 255, 0.8);
 }
 
-.nav-link:hover::after {
-  width: 70%;
+/* Section droite : Compte utilisateur */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 0;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.user-info:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a8ff, #0097e6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Bouton de déconnexion */
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 100, 100, 0.2);
+  border-color: rgba(255, 150, 150, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* ======== Design responsive ======== */
 
 @media (max-width: 1200px) {
-  .nav-links {
-    gap: 2px;
-    padding: 5px;
-  }
-  .nav-link {
-    padding: 7px 14px;
-    font-size: 0.85rem;
-    min-height: 32px;
-  }
-  .brand-text {
-    font-size: 1.25rem;
-  }
-  .logo-img {
-    height: 28px;
-  }
   .navbar-container {
-    height: 45px;
-    min-height: 45px;
+    max-width: 100%;
+    padding: 0 12px;
+  }
+  
+  .nav-links {
+    gap: 1px;
+    padding: 3px;
+  }
+  
+  .nav-link {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    min-height: 36px;
+  }
+  
+  .brand-main {
+    font-size: 1.3rem;
+  }
+  
+  .logo-img {
+    height: 32px;
   }
 }
 
 @media (max-width: 992px) {
   .navbar-container {
-    flex-direction: column;
-    height: auto;
-    padding: 10px 0;
-    min-height: auto;
+    flex-direction: row;
+    height: 52px;
+    min-height: 52px;
+    padding: 0 10px;
   }
-  .navbar-left {
-    margin-bottom: 10px;
-    padding-left: 0;
-    justify-content: center;
-    width: 100%;
+  
+  .navbar-center {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    background: linear-gradient(135deg, #0056a6 0%, #003366 100%);
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: none;
   }
-  .navbar-right {
-    padding-right: 0;
-    justify-content: center;
-    width: 100%;
+  
+  .navbar-center.active {
+    display: block;
   }
+  
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 95%;
-    gap: 2px;
-    padding: 4px;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
   }
+  
   .nav-link {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    min-height: 30px;
+    border-radius: 8px;
+    margin-bottom: 4px;
   }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .brand-sub {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
   .navbar {
-    padding: 0 5px;
+    min-height: 50px;
+  }
+  
+  .navbar-container {
+    height: 50px;
+    min-height: 50px;
+  }
+  
+  .logo-img {
+    height: 28px;
+  }
+  
+  .brand-main {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-right {
+    gap: 8px;
+  }
+  
+  .logout-btn span {
+    display: none;
+  }
+  
+  .logout-btn {
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border-radius: 50%;
   }
 }
 
 @media (max-width: 576px) {
   .navbar {
-    padding: 0 3px;
+    min-height: 48px;
   }
-  .brand-text {
+  
+  .navbar-container {
+    height: 48px;
+    min-height: 48px;
+    padding: 0 8px;
+  }
+  
+  .navbar-left {
+    gap: 8px;
+  }
+  
+  .logo-img {
+    height: 24px;
+  }
+  
+  .brand-main {
     font-size: 1.1rem;
   }
-  .logo-img {
-    height: 26px;
-  }
-  .nav-links {
-    gap: 1px;
-    padding: 3px;
-    border-radius: 25px;
-  }
-  .nav-link {
-    padding: 5px 10px;
-    font-size: 0.75rem;
-    min-height: 28px;
-    border-radius: 20px;
-  }
-  .navbar-container {
-    padding: 8px 0;
+  
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
   }
 }
