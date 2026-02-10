@@ -1,0 +1,741 @@
+/* ============================================ */
+/* INSCRIPTION.CSS - Page d'Inscription Tunisie Telecom */
+/* ============================================ */
+
+/* ========================= */
+/* RÉINITIALISATION ET VARIABLES */
+/* ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --primary-blue: #0066b3;
+  --primary-dark: #004a8f;
+  --secondary-blue: #00a8ff;
+  --text-white: #ffffff;
+  --text-light: rgba(255, 255, 255, 0.9);
+  --text-lighter: rgba(255, 255, 255, 0.7);
+  --bg-overlay: rgba(0, 51, 102, 0.75);
+  --bg-glass: rgba(255, 255, 255, 0.12);
+  --border-glass: rgba(255, 255, 255, 0.25);
+  --border-glass-light: rgba(255, 255, 255, 0.35);
+  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 4px 15px rgba(0, 102, 204, 0.4);
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* ========================= */
+/* PAGE D'INSCRIPTION - FOND */
+/* ========================= */
+.inscription-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  
+  /* IMAGE DE FOND RÉSEAU CELLULAIRE */
+  background: 
+    linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet de particules flottantes pour animation */
+.inscription-page::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 168, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 40% 90%, rgba(0, 168, 255, 0.08) 3px, transparent 3px);
+  background-size: 100px 100px;
+  animation: floatParticles 30s infinite linear;
+  z-index: 1;
+}
+
+@keyframes floatParticles {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(100px, 100px); }
+}
+
+/* ========================= */
+/* CONTENEUR PRINCIPAL */
+/* ========================= */
+.inscription-container {
+  background: var(--bg-glass);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: var(--radius);
+  padding: 40px 35px;
+  width: 100%;
+  max-width: 480px;
+  border: 1px solid var(--border-glass);
+  box-shadow: 
+    var(--shadow-dark),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.inscription-container:hover {
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================= */
+/* EN-TÊTE DU FORMULAIRE */
+/* ========================= */
+.inscription-header {
+  text-align: center;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.inscription-header::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary-blue), var(--primary-blue));
+  border-radius: 2px;
+}
+
+.inscription-header h1 {
+  color: var(--text-white);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.inscription-header p {
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 400;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================= */
+/* MESSAGES D'ALERTE */
+/* ========================= */
+.error-message {
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(211, 47, 47, 0.3));
+  color: #ff8a8a;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border-left: 4px solid #ff5252;
+  font-size: 14px;
+  animation: slideInRight 0.4s ease-out;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+}
+
+.success-message {
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.2), rgba(46, 125, 50, 0.3));
+  color: #a5d6a7;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border-left: 4px solid #4caf50;
+  font-size: 14px;
+  animation: slideInRight 0.4s ease-out;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+.error-message i, .success-message i {
+  font-size: 18px;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ========================= */
+/* FORMULAIRE D'INSCRIPTION */
+/* ========================= */
+.inscription-form {
+  width: 100%;
+}
+
+/* Groupes de formulaire */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  color: var(--text-white);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group label::before {
+  content: '';
+  width: 4px;
+  height: 14px;
+  background: var(--secondary-blue);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* Champs avec icônes */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  font-size: 16px;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+/* Champs de saisie */
+.form-control {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-glass-light);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--text-white);
+  transition: var(--transition);
+  position: relative;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.form-control:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 0 0 3px rgba(0, 168, 255, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus + .input-with-icon i {
+  color: var(--secondary-blue);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Messages de validation */
+.validation-error {
+  color: #ff8a8a;
+  font-size: 12px;
+  margin-top: 6px;
+  padding-left: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: fadeIn 0.3s ease;
+}
+
+.validation-error::before {
+  content: '⚠';
+  font-size: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========================= */
+/* OPTIONS DU FORMULAIRE */
+/* ========================= */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0;
+  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Conditions d'utilisation */
+.terms-conditions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+  user-select: none;
+}
+
+.terms-conditions input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--secondary-blue);
+  cursor: pointer;
+  position: relative;
+}
+
+.terms-conditions input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  border: 1px solid var(--border-glass-light);
+}
+
+.terms-conditions input[type="checkbox"]:checked::before {
+  background: var(--secondary-blue);
+  border-color: var(--secondary-blue);
+}
+
+.terms-conditions a {
+  color: var(--secondary-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.terms-conditions a:hover {
+  text-decoration: underline;
+}
+
+/* ========================= */
+/* BOUTONS */
+/* ========================= */
+.btn-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Bouton principal */
+.btn-register {
+  flex: 1;
+  background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+  color: var(--text-white);
+  border: none;
+  padding: 16px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-light);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-register::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+  z-index: -1;
+}
+
+.btn-register:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5);
+}
+
+.btn-register:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.btn-register:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.4);
+}
+
+.btn-register:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none !important;
+}
+
+/* Bouton Reset */
+.btn-reset {
+  width: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-white);
+  border: 1px solid var(--border-glass-light);
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.btn-reset:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-reset:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ========================= */
+/* PIED DE PAGE */
+/* ========================= */
+.inscription-footer {
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+
+.inscription-footer p {
+  color: var(--text-lighter);
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.inscription-footer a {
+  color: var(--text-white);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.inscription-footer a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--secondary-blue);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.inscription-footer a:hover {
+  color: #66b3ff;
+}
+
+.inscription-footer a:hover::after {
+  width: 100%;
+}
+
+/* ========================= */
+/* LOGO TT DISCRET */
+/* ========================= */
+.bottom-logo {
+  margin-top: 25px;
+  text-align: center;
+  color: var(--text-lighter);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+.bottom-logo:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.bottom-logo i {
+  font-size: 14px;
+  color: var(--secondary-blue);
+}
+
+/* ========================= */
+/* GRID POUR DEUX COLONNES SUR GRAND ÉCRAN */
+/* ========================= */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* ========================= */
+/* RESPONSIVE DESIGN */
+/* ========================= */
+@media (max-width: 768px) {
+  .inscription-container {
+    padding: 35px 30px;
+    max-width: 450px;
+    margin: 0 15px;
+  }
+
+  .inscription-header h1 {
+    font-size: 28px;
+  }
+
+  .inscription-header p {
+    font-size: 14px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .btn-container {
+    flex-direction: column;
+  }
+  
+  .btn-reset {
+    width: 100%;
+  }
+  
+  .inscription-page {
+    padding: 15px;
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 480px) {
+  .inscription-container {
+    padding: 30px 25px;
+    max-width: 95%;
+  }
+
+  .inscription-header h1 {
+    font-size: 26px;
+  }
+
+  .inscription-header p {
+    font-size: 13px;
+  }
+
+  .form-control {
+    padding: 14px 14px 14px 45px;
+    font-size: 14px;
+  }
+  
+  .btn-register, .btn-reset {
+    padding: 15px;
+    font-size: 15px;
+  }
+  
+  .inscription-page {
+    padding: 10px;
+  }
+  
+  .inscription-footer p {
+    font-size: 13px;
+  }
+}
+
+@media (min-height: 900px) {
+  .inscription-page {
+    min-height: 100vh;
+  }
+  
+  .inscription-container {
+    max-width: 500px;
+    padding: 45px 40px;
+  }
+}
+
+/* ========================= */
+/* ANIMATIONS SUPPLEMENTAIRES */
+/* ========================= */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ========================= */
+/* ÉTATS DE CHARGEMENT */
+/* ========================= */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================= */
+/* EFFETS SPÉCIAUX */
+/* ========================= */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--secondary-blue), var(--primary-blue), var(--secondary-blue));
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::after {
+  opacity: 0.3;
+  animation: glowRotate 3s linear infinite;
+}
+
+@keyframes glowRotate {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* ========================= */
+/* ACCESSIBILITÉ */
+/* ========================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .inscription-page::before {
+    animation: none;
+  }
+}
+
+/* Focus visibles pour accessibilité */
+.form-control:focus-visible,
+.btn-register:focus-visible,
+.btn-reset:focus-visible {
+  outline: 2px solid var(--secondary-blue);
+  outline-offset: 2px;
+}
+
+/* Mode sombre/clair */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --border-glass: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .inscription-page {
+    --bg-overlay: rgba(0, 51, 102, 0.85);
+  }
+}
