@@ -13,11 +13,15 @@ import Subscriptions from "./pages/Subscriptions";
 import Requests from "./pages/Requests";
 
 function App() {
+  const appName = import.meta.env.VITE_APP_NAME;
+
   return (
     <BrowserRouter>
       <Navbar />
 
       <main style={{ minHeight: "80vh" }}>
+        <h1 style={{ textAlign: "center" }}>{appName}</h1>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
